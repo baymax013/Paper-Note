@@ -32,6 +32,7 @@ JSMA攻击是利用DNN模型的前向偏差，通过了Jacobian矩阵去求得�
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/2381046/1675494429146-4c98cbb1-c0bc-47ae-865b-cc5cc19618a5.png#averageHue=%23f5f5f5&clientId=u719a6a43-2011-4&from=paste&height=61&id=uc9a253f7&originHeight=76&originWidth=575&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10390&status=done&style=none&taskId=u0e7b3e1c-3f1f-4d99-9352-58008e924bd&title=&width=460)
 给定一个模型F：Rn -> [0, 1]，x’是一个baseline input（基准输入），x是真实的输入。考虑从x’到输入x之间的一条直线路径，积分梯度就是对这条路径上的所有梯度进行累加。例如，对于输入x的第i个特征而言，积分梯度IG可以定义如上。
 如果是有目标攻击，就是应该要最大化F值，所以当图中的特征或者边是1时，可以选择有最低的负值IG分数的特征或者边，将其修改成0。如果是无目标攻击，就是应该要最小化真实标签的预测分数，所以需要选择有最高IG分数的维度，将其修改成0。
+
 ### 2.3.2 基线设置和 Edge Attack
 但是不像图像一样，我们可以将一个全黑的图像（black image）设置成baseline input。作者使用了一个全0或者是全1的特征/邻接矩阵来表示 1->0 的扰动或者是 0->1 的扰动。当去除一条特定边或者是将一个特定的特征从1改成0后，作者是将邻接矩阵A和特征矩阵X设置成全0，然后逐渐的在当前全0的矩阵上添加边或者特征，然后观察F的整体变化。相反的，当添加一条特定边或者将一个特定的特征从0改成1后，首先将A和X都设置成全1，然后逐渐的移除某条边或者某个特征，然后观察F的整体变化。对于边攻击（edge attack）的IG分数计算如下所示：
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/2381046/1675495706449-27e00952-3fee-4810-8775-71111cbfe028.png#averageHue=%23f6f6f6&clientId=u719a6a43-2011-4&from=paste&height=151&id=ua12096a6&originHeight=189&originWidth=770&originalType=binary&ratio=1&rotation=0&showTitle=false&size=33414&status=done&style=none&taskId=ua2730e7d-4925-45d8-a74d-c60a379c747&title=&width=616)
@@ -48,7 +49,9 @@ JSMA攻击是利用DNN模型的前向偏差，通过了Jacobian矩阵去求得�
 # 3. 防御模型：GCN-Jaccard
 ## 3.1 Jaccard相似度
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/2381046/1675499878531-0b921d4c-ed43-457f-8ef9-84ad1bf8c96f.png#averageHue=%23f7f7f7&clientId=uc791ee9e-0bfd-4&from=paste&height=79&id=ub1d1ae5c&originHeight=111&originWidth=531&originalType=binary&ratio=1&rotation=0&showTitle=false&size=6867&status=done&style=none&taskId=ube16e5fe-373c-41ce-a922-72a6638add9&title=&width=377.8000183105469)
+
 该式子计算了“节点u”和“节点v”之间的Jaccard相似度。M11表示 u 的特征为1，v 的特征也为1。M01，M10类似。
+
 ## 3.2 防御假设
 为了防御GCN上的对抗攻击，作者首先提出一个假设，那就是，GCN模型之所以很容易被攻击，是因为它极强的依赖于图结构和邻居节点特征的聚合。在被攻击图上训练得到的模型就容易受到这个攻击边界的影响。目前公认的一点是，在一个模型上训练得到的对抗样本可以迁移到其他模型中。目前对于GCN模型的对抗攻击是很成功的，原因在于这些被攻击的图可以直接被用于训练一个新模型。基于这种攻击方式，**一个可行的防御方法是让邻接矩阵变得可训练**（trainable）。
 > 针对这种想法，作者做了验证。没有采取任何防御措施时节点以0.998的概率被误分类。但如果仅仅在最开始初始化边的权重，不修改其他东西，再对GCN模型训练，就可以让这个节点以0.912的概率正确分类。

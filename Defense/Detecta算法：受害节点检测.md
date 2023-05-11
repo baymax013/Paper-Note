@@ -1,7 +1,9 @@
 ## 论文简述
 
 论文题目：Detecting Topology Attacks against Graph Neural Networks
+
 论文地址：*https://arxiv.org/abs/2204.10072*
+
 论文概况：基于领域方差的受害节点检测方法
 
 ------
