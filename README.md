@@ -1,6 +1,7 @@
 # GNN
 
 + **NodeFormer: A Scalable Graph Structure Learning Transformer for Node Classification**
++ **Elastic Graph Neural Networks**
 
 # Attack
 

@@ -1,7 +1,9 @@
 ## 论文总结：
 
 论文题目：NodeFormer: A Scalable Graph Structure Learning Transformer for Node Classification
+
 论文地址：[https://openreview.net/pdf?id=sMezXGG5So](https://openreview.net/pdf?id=sMezXGG5So)
+
 论文概况：适配大型图，解耦图结构信息，将复杂度压在线性
 
 ---
