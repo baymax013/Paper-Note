@@ -1,10 +1,10 @@
 ## 论文简述
 
 论文题目：Adversarial Examples on Graph Data: Deep Insights into Attack and Defense
-论文地址：*https://arxiv.org/abs/1903.01610*
-论文概况：经典的GCN-Jaccard 和 IGAttack攻击方法
 
-------
+论文地址：*https://arxiv.org/abs/1903.01610*
+
+论文概况：经典的GCN-Jaccard 和 IGAttack攻击方法
 
 # 1. 引言
 

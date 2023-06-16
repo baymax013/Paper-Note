@@ -1,10 +1,10 @@
 ## 论文简述
 
 论文题目：Empowering Graph Representation Learning with Test-Time Graph Transformation
-论文地址：*https://arxiv.org/abs/2210.03561*
-论文概况：GTRANS框架，以图数据为中心视角，在测试阶段转换测试图。
 
-------
+论文地址：*https://arxiv.org/abs/2210.03561*
+
+论文概况：GTRANS框架，以图数据为中心视角，在测试阶段转换测试图。
 
 # 1. 介绍
 

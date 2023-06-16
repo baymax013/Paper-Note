@@ -2,6 +2,7 @@
 
 + **NodeFormer: A Scalable Graph Structure Learning Transformer for Node Classification**
 + **Elastic Graph Neural Networks**
++ **What's Behind the Mask: Understanding Masked Graph Modeling for Graph Autoencoders**
 
 # Attack
 

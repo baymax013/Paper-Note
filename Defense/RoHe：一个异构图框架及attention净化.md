@@ -1,10 +1,12 @@
 ## 论文简述
 
 论文题目：Robust Heterogeneous Graph Neural Networks against Adversarial Attacks
+
 论文地址：*http://shichuan.org/doc/132.pdf*
+
 论文概况：健壮的异构GNN框架 RoHe 以及一种 Attention Purifier
 
-------
+
 
 ## HGNNs 的脆弱性
 

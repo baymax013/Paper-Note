@@ -8,7 +8,7 @@
 
 论文code：https://github.com/lxiaorui/ElasticGNN
 
-------
+
 
 ## 主要思想：
 

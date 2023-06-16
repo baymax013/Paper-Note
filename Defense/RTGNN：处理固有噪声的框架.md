@@ -1,10 +1,10 @@
 ## 论文简述
 
 论文题目：Robust Training of Graph Neural Networks via Noise Governance
-论文地址：*https://arxiv.org/abs/2211.06614*
-论文概况：基于NRGNN的RTGNN，针对固有噪声的处理
 
-------
+论文地址：*https://arxiv.org/abs/2211.06614*
+
+论文概况：基于NRGNN的RTGNN，针对固有噪声的处理
 
 # 引言和相关工作
 
